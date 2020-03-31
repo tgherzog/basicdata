@@ -1,0 +1,53 @@
+id,name,population,code
+01,Alabama,4903185,AL
+02,Alaska,731545,AK
+04,Arizona,7278717,AZ
+05,Arkansas,3017804,AR
+06,California,39512223,CA
+08,Colorado,5758736,CO
+09,Connecticut,3565287,CT
+10,Delaware,973764,DE
+11,District of Columbia,705749,DC
+12,Florida,21477737,FL
+13,Georgia,10617423,GA
+15,Hawaii,1415872,HI
+16,Idaho,1787065,ID
+17,Illinois,12671821,IL
+18,Indiana,6732219,IN
+19,Iowa,3155070,IA
+20,Kansas,2913314,KS
+21,Kentucky,4467673,KY
+22,Louisiana,4648794,LA
+23,Maine,1344212,ME
+24,Maryland,6045680,MD
+25,Massachusetts,6892503,MA
+26,Michigan,9986857,MI
+27,Minnesota,5639632,MN
+28,Mississippi,2976149,MS
+29,Missouri,6137428,MO
+30,Montana,1068778,MT
+31,Nebraska,1934408,NE
+32,Nevada,3080156,NV
+33,New Hampshire,1359711,NH
+34,New Jersey,8882190,NJ
+35,New Mexico,2096829,NM
+36,New York,19453561,NY
+37,North Carolina,10488084,NC
+38,North Dakota,762062,ND
+39,Ohio,11689100,OH
+40,Oklahoma,3956971,OK
+41,Oregon,4217737,OR
+42,Pennsylvania,12801989,PA
+44,Rhode Island,1059361,RI
+45,South Carolina,5148714,SC
+46,South Dakota,884659,SD
+47,Tennessee,6829174,TN
+48,Texas,28995881,TX
+49,Utah,3205958,UT
+50,Vermont,623989,VT
+51,Virginia,8535519,VA
+53,Washington,7614893,WA
+54,West Virginia,1792147,WV
+55,Wisconsin,5822434,WI
+56,Wyoming,578759,WY
+72,Puerto Rico,3193694,PR
