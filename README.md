@@ -37,3 +37,20 @@ id,name,surface_area,land_area[,level-specific fields]
 ```
 
 Script:  `code/area.py`
+
+
+### Centroids (longitude, latitude) ###
+
+Logical centroids, defined differently at different levels
+
+* Countries: World Bank, https://api.worldbank.org/en/country
+* US States: https://www.census.gov/geographies/reference-files/time-series/geo/centers-population.html
+* US Counties: https://www.census.gov/geographies/reference-files/time-series/geo/centers-population.html
+
+File Format:
+
+```
+id,name,long,lat[,level-specific-fields]
+```
+
+Script: `code/centroid.py`
