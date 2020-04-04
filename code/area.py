@@ -6,19 +6,20 @@ modified periodically when new fetches are needed.
 See README file for sources and layout notes
 
 Usage:
-  area.py --level=LEVEL [--input-dir=DIR]
+  area.py country
+  area.py usstate --src=SRC_FILE [--fips=FIPS_FILE]
+  area.py uscty   --src=SRC_FILE [--fips=FIPS_FILE]
 
 Options:
-  --level=LEVEL      Level to fetch (country | usstate | uscty) [default: country]
+  --src=SRC_FILE     Source file
+  --fips=FIPS_FILE   Path to FIPS file [default: data/usstates.csv]
 
-  --input-dir=DIR    Input directory [default: inputs]
 '''
 
 import pandas as pd
 import wbgapi as wb
 import sys
 import os
-import yaml
 
 from docopt import docopt
 
@@ -32,23 +33,22 @@ def get_countries():
     pop.sort_index().to_csv(sys.stdout, float_format='%.0f', columns=['name', 'surface_area', 'land_area'])
 
 
-def get_areadata(level):
+def get_areadata(usstate):
 
     # The FactFinder link above provides a user interface to download a zipped CSV file, which you must first extract
     # to the local directory
-    input_file = os.path.join(options['--input-dir'], 'DEC_10_SF1_GCTPH1.US05PR.csv')
 
-    area = pd.read_csv(input_file, encoding='ISO-8859-1').dropna(subset=['GCT_STUB.target-geo-id2'])
+    area = pd.read_csv(options['--src'], encoding='ISO-8859-1').dropna(subset=['GCT_STUB.target-geo-id2'])
     area.rename(columns={'GCT_STUB.target-geo-id2': 'fips_num', 'SUBHD0301': 'surface_area', 'SUBHD0303': 'land_area', 'GCT_STUB.display-label.1': 'name'}, inplace=True)
     area.loc[area.fips_num<100,'id'] = area.loc[area.fips_num<100].fips_num.apply(lambda x: '{:02d}'.format(int(x)))
     area.loc[area.fips_num>=100,'id'] = area.loc[area.fips_num>=100].fips_num.apply(lambda x: '{:05d}'.format(int(x)))
 
     # convert from sq. miles to sq. km
     area[['surface_area', 'land_area']] *= 2.58999
-    if level == 'usstate':
-        meta = {i['fips']: i for i in yaml.safe_load(open(os.path.join(options['--input-dir'], 'usstatemeta.yaml'), 'r'))}
+    if usstate:
+        meta = pd.read_csv(options['--fips'], dtype=str).set_index('fips')
         area = area[area.fips_num<100]
-        area['code'] = area['id'].apply(lambda x: meta[x]['code'])
+        area['code'] = area['id'].apply(lambda x: meta.loc[x, 'code'])
         area.to_csv(sys.stdout, index=False, columns=['id', 'name', 'surface_area', 'land_area', 'code'], float_format='%.0f')
     else:
         area = area[area.fips_num>=100]
@@ -58,9 +58,7 @@ def get_areadata(level):
         area.to_csv(sys.stdout, index=False, columns=['id', 'name', 'surface_area', 'land_area', 'state_name'], float_format='%.0f')
 
 
-if options['--level'] == 'country':
+if options['country']:
     get_countries()
-elif options['--level'] in ['usstate', 'uscty']:
-    get_areadata(options['--level'])
-else:
-    raise ValueError('Uncrecognized level: {}'.format(options['--level']))
+elif options['usstate'] or options['uscty']:
+    get_areadata(options['usstate'])

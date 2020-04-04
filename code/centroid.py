@@ -6,19 +6,19 @@ modified periodically when new fetches are needed
 See README file for sources and layout notes
 
 Usage:
-  centroid.py --level=LEVEL [--input-dir=DIR]
+  centroid.py country
+  centroid.py usstate [--fips=FIPS_FILE]
+  centroid.py uscty
 
 Options:
-  --level=LEVEL      Level to fetch (country | usstate | uscty) [default: country]
+  --fips=FIPS_FILE   Path to FIPS file [default: data/usstates.csv]
 
-  --input-dir=DIR    Input directory [default: inputs]
 '''
 
 import pandas as pd
 import wbgapi as wb
 import sys
 import os
-import yaml
 
 from docopt import docopt
 
@@ -49,22 +49,20 @@ def get_usstates():
     # current source: needs to be validated and updated each time
     url = 'https://www2.census.gov/geo/docs/reference/cenpop2010/CenPop2010_Mean_ST.txt'
 
-    meta = {i['fips']: i for i in yaml.safe_load(open(os.path.join(options['--input-dir'], 'usstatemeta.yaml'), 'r'))}
+    meta = pd.read_csv(options['--fips'], dtype=str).set_index('fips')
     cen = pd.read_csv(url)
     cen.rename(columns={'STATEFP': 'id', 'LATITUDE': 'lat', 'LONGITUDE': 'long', 'STNAME': 'name'}, inplace=True)
 
     # cleaning
     cen['id']   = cen['id'].apply(lambda x: '{:02d}'.format(x))
-    cen['code'] = cen['id'].apply(lambda x: meta[x]['code'])
+    cen['code'] = cen['id'].apply(lambda x: meta.loc[x, 'code'])
 
     cen.sort_values('id').to_csv(sys.stdout, index=False, columns=['id', 'name', 'long', 'lat', 'code'])
 
 
-if options['--level'] == 'country':
+if options['country']:
     get_countries()
-elif options['--level'] == 'usstate':
+elif options['usstate']:
     get_usstates()
-elif options['--level'] == 'uscty':
+elif options['uscty']:
     get_uscounties()
-else:
-    raise ValueError('Uncrecognized level: {}'.format(options['--level']))

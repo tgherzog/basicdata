@@ -1,0 +1,56 @@
+fips,code,level,name
+"01",AL,0,Alabama
+"02",AK,0,Alaska
+"60",AS,2,American Samoa
+"04",AZ,0,Arizona
+"05",AR,0,Arkansas
+"06",CA,0,California
+"08",CO,0,Colorado
+"09",CT,0,Connecticut
+"10",DE,0,Delaware
+"11",DC,1,District of Columbia
+"12",FL,0,Florida
+"13",GA,0,Georgia
+"66",GU,2,Guam
+"15",HI,0,Hawaii
+"16",ID,0,Idaho
+"17",IL,0,Illinois
+"18",IN,0,Indiana
+"19",IA,0,Iowa
+"20",KS,0,Kansas
+"21",KY,0,Kentucky
+"22",LA,0,Louisiana
+"23",ME,0,Maine
+"24",MD,0,Maryland
+"25",MA,0,Massachusetts
+"26",MI,0,Michigan
+"27",MN,0,Minnesota
+"28",MS,0,Mississippi
+"29",MO,0,Missouri
+"30",MT,0,Montana
+"31",NE,0,Nebraska
+"32",NV,0,Nevada
+"33",NH,0,New Hampshire
+"34",NJ,0,New Jersey
+"35",NM,0,New Mexico
+"36",NY,0,New York
+"37",NC,0,North Carolina
+"38",ND,0,North Dakota
+"39",OH,0,Ohio
+"40",OK,0,Oklahoma
+"41",OR,0,Oregon
+"42",PA,0,Pennsylvania
+"72",PR,2,Puerto Rico
+"44",RI,0,Rhode Island
+"45",SC,0,South Carolina
+"46",SD,0,South Dakota
+"47",TN,0,Tennessee
+"48",TX,0,Texas
+"49",UT,0,Utah
+"50",VT,0,Vermont
+"51",VA,0,Virginia
+"78",VI,2,US Virgin Islands
+"53",WA,0,Washington
+"54",WV,0,West Virginia
+"55",WI,0,Wisconsin
+"56",WY,0,Wyoming

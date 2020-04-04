@@ -7,6 +7,27 @@ are available. Generation scripts are also included as are sources. The data typ
 don't need to change more than perhaps once a year, but minor changes to the scripts
 are very likely.
 
+### US State Names and Codes ###
+
+This file is maintained by hand. It includes names, FIPS and postal codes
+for the 50 states, DC and the 4 major island territories. The level column
+can be used to select different feature types.
+
+File Format:
+
+```
+fips,code,level,name
+```
+
+Hint: some programs will try to convert the fips field to a numeric and you'll lose
+the leading 0. Here is a quick fix for pandas, with the only downside being that the 
+`level` field is also read as a string:
+
+```
+df = pdf.read_csv('data/usstates.csv', dtype=str)
+```
+
+
 ### Population (latest available year) ###
 
 * Countries: World Bank, https://api.worldbank.org/SP.POP.TOTL
@@ -28,7 +49,7 @@ Script:  `code/pop.py`
 * US Counties: US Census: https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk
 
 **NB:** The FactFinder link above provides a user interface to download the state/county data. You need to download it
-and extract the CSV to the inputs directory prior to running the build script
+and extract the CSV to the inputs directory prior to running the build script.
 
 File Format:
 
