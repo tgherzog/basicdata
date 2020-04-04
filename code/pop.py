@@ -25,7 +25,8 @@ options = docopt(__doc__)
 
 def get_countries():
 
-    pop = wb.data.DataFrame('SP.POP.TOTL', mrv=1, labels=True, skipAggs=True, skipBlanks=True)
+    countries = [row['id'] for row in wb.economy.list(skipAggs=True)]
+    pop = wb.data.DataFrame('SP.POP.TOTL', countries + ['WLD'], mrv=1, labels=True, skipBlanks=True)
     pop.index.rename('id', inplace=True)
     pop.rename(columns={'SP.POP.TOTL': 'population', 'Country': 'name'}, inplace=True)
     pop.sort_index().to_csv(sys.stdout, float_format='%.0f')
