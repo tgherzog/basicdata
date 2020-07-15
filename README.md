@@ -24,7 +24,7 @@ the leading 0. Here is a quick fix for pandas, with the only downside being that
 `level` field is also read as a string:
 
 ```
-df = pdf.read_csv('data/usstates.csv', dtype=str)
+df = pd.read_csv('data/usstates.csv', dtype=str)
 ```
 
 
