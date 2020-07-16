@@ -6,9 +6,9 @@ modified periodically when new fetches are needed
 See README file for sources and layout notes
 
 Usage:
-  area.py country
-  area.py usstate [--fips=FIPS_FILE]
-  area.py uscty
+  pop.py country
+  pop.py usstate [--fips=FIPS_FILE]
+  pop.py uscty
 
 Options:
   --fips=FIPS_FILE   Path to FIPS file [default: data/usstates.csv]
