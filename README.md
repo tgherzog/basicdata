@@ -34,6 +34,11 @@ df = pd.read_csv('data/usstates.csv', dtype=str)
 * US States: US Census: https://www2.census.gov/programs-surveys/popest/datasets/
 * US Counties: US Census: https://www2.census.gov/programs-surveys/popest/datasets/
 
+#### Notes ####
+
+2021-01-28: Census now publishes 2020 estimates at the above URL but does not include Puerto Rico for some reason,
+            so we stick with 2019 for now
+
 File Format:
 
 ```
