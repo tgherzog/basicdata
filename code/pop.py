@@ -42,9 +42,10 @@ def get_countries():
 def get_uscounties():
 
     # current source: needs to be validated and updated each time
-    # expected fields: SUMLEV,STATE,COUNTY,CTYNAME,POPESTIMATE2019
+    # expected fields: SUMLEV,STATE,COUNTY,CTYNAME,POPESTIMATE2020
     url = 'https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.csv'
-    pop_field = 'POPESTIMATE2019'
+    url = 'https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/counties/totals/co-est2020.csv'
+    pop_field = 'POPESTIMATE2020'
 
     logging.log(STATUS, 'Reading county population data from {}'.format(url))
     logging.log(STATUS, 'Source field: {}'.format(pop_field))
@@ -61,9 +62,9 @@ def get_uscounties():
 def get_usstates():
 
     # current source: needs to be validated and updated each time
-    # expected fields: STATE,NAME,POPESTIMATE2019
-    url = 'https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/state/detail/SCPRC-EST2019-18+POP-RES.csv'
-    pop_field = 'POPESTIMATE2019'
+    # expected fields: STATE,NAME,POPESTIMATE2020
+    url = 'https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/state/totals/nst-est2020.csv'
+    pop_field = 'POPESTIMATE2020'
 
     logging.log(STATUS, 'Reading state population data from {}'.format(url))
     logging.log(STATUS, 'Source field: {}'.format(pop_field))
